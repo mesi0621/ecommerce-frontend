@@ -1,6 +1,12 @@
 // Helper function to get product image
-// Since backend returns image filenames, we need to import them from Assets
+// Handles both external URLs and local asset filenames
 export const getProductImage = (imageName) => {
+    // If it's an external URL (starts with http:// or https://), return it directly
+    if (imageName && (imageName.startsWith('http://') || imageName.startsWith('https://'))) {
+        return imageName;
+    }
+
+    // Otherwise, try to load from local Assets folder
     try {
         // Try to import the image from Assets folder
         // require() returns a module with a default property
