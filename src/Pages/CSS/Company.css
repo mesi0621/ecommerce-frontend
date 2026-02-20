@@ -1,0 +1,272 @@
+/* Company Page - Mobile First */
+.company-page {
+    min-height: 100vh;
+    padding: var(--space-md);
+    background: var(--color-bg-primary);
+}
+
+.company-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.company-header {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+    padding: var(--space-xl) 0;
+}
+
+.company-header h1 {
+    font-size: var(--font-heading-1);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-md);
+}
+
+.company-subtitle {
+    font-size: var(--font-lg);
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+.company-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xl);
+}
+
+.company-section {
+    background: white;
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.company-section h2 {
+    font-size: var(--font-heading-2);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-md);
+    border-bottom: 2px solid var(--color-primary);
+}
+
+.company-section p {
+    font-size: var(--font-base);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-md);
+}
+
+.mission-text,
+.vision-text {
+    font-size: var(--font-lg);
+    line-height: var(--line-height-relaxed);
+}
+
+/* Stats Section */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+.stat-card {
+    text-align: center;
+    padding: var(--space-xl);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-md);
+    transition: transform var(--transition-fast);
+}
+
+.stat-card:active {
+    transform: scale(0.98);
+}
+
+.stat-number {
+    font-size: var(--font-3xl);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--space-sm);
+}
+
+.stat-label {
+    font-size: var(--font-base);
+    color: var(--color-text-secondary);
+    font-weight: 500;
+}
+
+/* Team Values */
+.team-values {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    margin-top: var(--space-xl);
+}
+
+.value-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--space-lg);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-md);
+}
+
+.value-icon {
+    font-size: 48px;
+    margin-bottom: var(--space-md);
+}
+
+.value-item h3 {
+    font-size: var(--font-xl);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-sm);
+}
+
+.value-item p {
+    font-size: var(--font-base);
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+/* Sustainability List */
+.sustainability-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-lg) 0 0 0;
+}
+
+.sustainability-list li {
+    padding: var(--space-md);
+    margin-bottom: var(--space-md);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-md);
+    border-left: 4px solid #22c55e;
+    font-size: var(--font-base);
+    color: var(--color-text-secondary);
+}
+
+.sustainability-list li::before {
+    content: "✓ ";
+    color: #22c55e;
+    font-weight: bold;
+    margin-right: var(--space-sm);
+}
+
+/* CTA Section */
+.cta-section {
+    text-align: center;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: white;
+}
+
+.cta-section h2 {
+    color: white;
+    border-bottom-color: rgba(255, 255, 255, 0.3);
+}
+
+.cta-section p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: var(--font-lg);
+}
+
+.cta-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-top: var(--space-xl);
+}
+
+.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-md) var(--space-xl);
+    border-radius: var(--radius-md);
+    font-size: var(--font-lg);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    min-height: var(--touch-target-large);
+}
+
+.cta-btn.primary {
+    background: white;
+    color: var(--color-primary);
+}
+
+.cta-btn.primary:active {
+    transform: scale(0.98);
+    box-shadow: var(--shadow-lg);
+}
+
+.cta-btn.secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.cta-btn.secondary:active {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Tablet Styles (768px+) */
+@media (min-width: 768px) {
+    .company-page {
+        padding: var(--space-xl);
+    }
+
+    .company-header {
+        padding: var(--space-2xl) 0;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--space-lg);
+    }
+
+    .stat-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+    }
+
+    .team-values {
+        flex-direction: row;
+        gap: var(--space-xl);
+    }
+
+    .value-item {
+        flex: 1;
+    }
+
+    .cta-buttons {
+        flex-direction: row;
+        justify-content: center;
+        gap: var(--space-lg);
+    }
+
+    .cta-btn {
+        min-width: 200px;
+    }
+
+    .cta-btn.primary:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .cta-btn.secondary:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Desktop Styles (1024px+) */
+@media (min-width: 1024px) {
+    .company-page {
+        padding: var(--space-2xl) var(--space-xl);
+    }
+
+    .company-section {
+        padding: var(--space-2xl);
+    }
+}

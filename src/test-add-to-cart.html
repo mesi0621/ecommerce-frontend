@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Test Add to Cart</title>
+</head>
+
+<body>
+    <h1>Test Add to Cart Functionality</h1>
+
+    <script>
+        // Test the API directly
+        async function testAddToCart() {
+            try {
+                console.log('Testing add to cart...');
+
+                // Test products API
+                const productsResponse = await fetch('http://localhost:5000/api/products');
+                const productsData = await productsResponse.json();
+                console.log('Products API response:', productsData);
+
+                if (productsData.success && productsData.data && productsData.data.length > 0) {
+                    const testProduct = productsData.data[0];
+                    console.log('Test product:', testProduct);
+
+                    // Test add to cart API
+                    const userId = '698c6efed2acf8b8712f099f'; // Test user ID
+                    const addResponse = await fetch(`http://localhost:5000/api/cart/${userId}/items`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            productId: testProduct.id,
+                            quantity: 1,
+                            price: testProduct.new_price
+                        })
+                    });
+
+                    const addData = await addResponse.json();
+                    console.log('Add to cart response:', addData);
+
+                    if (addData.success) {
+                        console.log('✅ Add to cart successful!');
+                        document.body.innerHTML += '<p style="color: green;">✅ Add to cart test PASSED!</p>';
+                    } else {
+                        console.log('❌ Add to cart failed:', addData.error);
+                        document.body.innerHTML += '<p style="color: red;">❌ Add to cart test FAILED: ' + addData.error + '</p>';
+                    }
+                } else {
+                    console.log('❌ No products found');
+                    document.body.innerHTML += '<p style="color: red;">❌ No products found</p>';
+                }
+
+            } catch (error) {
+                console.error('Test error:', error);
+                document.body.innerHTML += '<p style="color: red;">❌ Test error: ' + error.message + '</p>';
+            }
+        }
+
+        // Run test when page loads
+        window.onload = testAddToCart;
+    </script>
+
+    <p>Check the browser console for detailed logs...</p>
+</body>
+
+</html>

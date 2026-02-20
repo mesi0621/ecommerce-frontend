@@ -1,0 +1,511 @@
+/* Global Dark Theme - Override all white backgrounds */
+/* NAVBAR EXCLUDED - Keeps original light theme */
+
+/* Base elements */
+body,
+html,
+#root {
+    background: #0f172a !important;
+    color: #e2e8f0 !important;
+}
+
+/* All white backgrounds to dark (EXCEPT NAVBAR) */
+div:not(.navbar):not(.navbar *),
+section,
+article,
+main,
+aside,
+header:not(.navbar):not(.navbar *),
+footer,
+nav:not(.navbar):not(.navbar *) {
+    background-color: transparent;
+}
+
+/* Cards and containers */
+.card,
+.container,
+.box,
+.panel,
+[class*="card"]:not(.navbar *),
+[class*="container"]:not(.navbar *),
+[class*="box"]:not(.navbar *) {
+    background: #1e293b !important;
+    color: #e2e8f0 !important;
+    border-color: #334155 !important;
+}
+
+/* White backgrounds specifically (EXCEPT NAVBAR) */
+[style*="background: white"]:not(.navbar):not(.navbar *),
+[style*="background: #fff"]:not(.navbar):not(.navbar *),
+[style*="background: #ffffff"]:not(.navbar):not(.navbar *),
+[style*="background-color: white"]:not(.navbar):not(.navbar *),
+[style*="background-color: #fff"]:not(.navbar):not(.navbar *),
+[style*="background-color: #ffffff"]:not(.navbar):not(.navbar *) {
+    background: #1e293b !important;
+    background-color: #1e293b !important;
+}
+
+/* NAVBAR - Keep original light theme */
+.navbar,
+.navbar *,
+.nav-logo,
+.nav-logo *,
+.nav-menu,
+.nav-menu *,
+.mobile-menu-drawer,
+.mobile-menu-drawer *,
+.mobile-menu-header,
+.mobile-menu-header *,
+.mobile-menu-list,
+.mobile-menu-list *,
+.mobile-menu-footer,
+.mobile-menu-footer *,
+.hamburger,
+.hamburger * {
+    background: white !important;
+    color: #262626 !important;
+}
+
+.navbar {
+    border-bottom: 1px solid #e5e7eb !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.mobile-menu-drawer {
+    border-left: 1px solid #e5e7eb !important;
+}
+
+.mobile-menu-header {
+    background: #f9fafb !important;
+    border-bottom: 1px solid #e5e7eb !important;
+}
+
+.mobile-menu-footer {
+    background: #f9fafb !important;
+    border-top: 1px solid #e5e7eb !important;
+}
+
+.mobile-menu-list li:hover {
+    background: #f3f4f6 !important;
+}
+
+.nav-menu a {
+    color: #262626 !important;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    color: #ff4141 !important;
+}
+
+.hamburger span {
+    background: #262626 !important;
+}
+
+.nav-cart-count {
+    background: #ef4444 !important;
+    color: white !important;
+}
+
+/* Tables */
+table:not(.navbar *) {
+    background: #1e293b !important;
+    color: #e2e8f0 !important;
+}
+
+thead:not(.navbar *) {
+    background: #334155 !important;
+}
+
+tbody tr:not(.navbar *) {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+}
+
+tbody tr:hover:not(.navbar *) {
+    background: #334155 !important;
+}
+
+th:not(.navbar *),
+td:not(.navbar *) {
+    color: #e2e8f0 !important;
+    border-color: #334155 !important;
+}
+
+/* Forms */
+input:not(.navbar *),
+textarea:not(.navbar *),
+select:not(.navbar *) {
+    background: #334155 !important;
+    color: #e2e8f0 !important;
+    border-color: #475569 !important;
+}
+
+input::placeholder:not(.navbar *),
+textarea::placeholder:not(.navbar *) {
+    color: #64748b !important;
+}
+
+input:focus:not(.navbar *),
+textarea:focus:not(.navbar *),
+select:focus:not(.navbar *) {
+    background: #475569 !important;
+    border-color: #3b82f6 !important;
+    outline: none !important;
+}
+
+/* Buttons - preserve their colors but adjust text */
+button:not(.navbar *) {
+    color: white !important;
+}
+
+/* Links */
+a:not(.navbar *):not(.navbar a) {
+    color: #60a5fa !important;
+}
+
+a:hover:not(.navbar *):not(.navbar a) {
+    color: #93c5fd !important;
+}
+
+/* Modals and overlays */
+.modal:not(.navbar *),
+.overlay:not(.navbar *),
+.popup:not(.navbar *),
+[class*="modal"]:not(.navbar *),
+[class*="overlay"]:not(.navbar *),
+[class*="popup"]:not(.navbar *) {
+    background: #1e293b !important;
+    color: #e2e8f0 !important;
+}
+
+/* Dropdowns */
+.dropdown:not(.navbar *),
+.menu:not(.navbar *),
+[class*="dropdown"]:not(.navbar *),
+[class*="menu"]:not(.navbar *) {
+    background: #1e293b !important;
+    color: #e2e8f0 !important;
+    border-color: #334155 !important;
+}
+
+/* Badges and tags */
+.badge:not(.navbar *),
+.tag:not(.navbar *),
+[class*="badge"]:not(.navbar *),
+[class*="tag"]:not(.navbar *) {
+    color: white !important;
+}
+
+/* Specific overrides for common patterns */
+.bg-white:not(.navbar *) {
+    background: #1e293b !important;
+}
+
+.text-black:not(.navbar *),
+.text-dark:not(.navbar *) {
+    color: #e2e8f0 !important;
+}
+
+.text-gray-600:not(.navbar *),
+.text-gray-700:not(.navbar *),
+.text-gray-800:not(.navbar *),
+.text-gray-900:not(.navbar *) {
+    color: #94a3b8 !important;
+}
+
+.border-gray-200:not(.navbar *),
+.border-gray-300:not(.navbar *) {
+    border-color: #334155 !important;
+}
+
+/* Shadows - adjust for dark theme */
+[class*="shadow"]:not(.navbar *) {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Loading states */
+.loading:not(.navbar *),
+.spinner:not(.navbar *),
+[class*="loading"]:not(.navbar *),
+[class*="spinner"]:not(.navbar *) {
+    color: #e2e8f0 !important;
+}
+
+/* Images - add slight border for visibility */
+img:not(.navbar *):not(.navbar img) {
+    border: 1px solid #334155;
+    border-radius: 4px;
+}
+
+/* Scrollbars */
+*:not(.navbar):not(.navbar *) {
+    scrollbar-width: thin;
+    scrollbar-color: #475569 #1e293b;
+}
+
+*:not(.navbar):not(.navbar *)::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+*:not(.navbar):not(.navbar *)::-webkit-scrollbar-track {
+    background: #1e293b;
+}
+
+*:not(.navbar):not(.navbar *)::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 5px;
+}
+
+*:not(.navbar):not(.navbar *)::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+}
+
+/* Preserve gradient backgrounds but darken them */
+[style*="linear-gradient"]:not(.navbar *) {
+    filter: brightness(0.8);
+}
+
+/* Status badges - keep their colors but ensure text is visible */
+.status-badge:not(.navbar *),
+.role-badge:not(.navbar *),
+[class*="status-"]:not(.navbar *),
+[class*="role-"]:not(.navbar *) {
+    color: white !important;
+}
+
+/* Ensure text is always readable */
+h1:not(.navbar *),
+h2:not(.navbar *),
+h3:not(.navbar *),
+h4:not(.navbar *),
+h5:not(.navbar *),
+h6:not(.navbar *) {
+    color: #f1f5f9 !important;
+}
+
+p:not(.navbar *),
+span:not(.navbar *),
+label:not(.navbar *) {
+    color: #e2e8f0 !important;
+}
+
+/* Specific component overrides */
+.stat-card:not(.navbar *),
+.product-card:not(.navbar *),
+.earning-card:not(.navbar *),
+.profile-card:not(.navbar *),
+.category-card:not(.navbar *),
+.role-card:not(.navbar *),
+.report-card:not(.navbar *) {
+    background: #1e293b !important;
+    color: #e2e8f0 !important;
+    border: 1px solid #334155 !important;
+}
+
+.stat-card.highlight:not(.navbar *) {
+    /* Keep gradient backgrounds for highlight cards */
+    color: white !important;
+}
+
+/* Admin and Seller dashboards */
+.admin-content,
+.seller-content,
+.main-content {
+    background: #0f172a !important;
+}
+
+.admin-sidebar,
+.seller-sidebar,
+.vertical-sidebar {
+    /* Keep sidebar gradients */
+    color: white !important;
+}
+
+/* Tables specific */
+.admin-table,
+.orders-table,
+.data-table {
+    background: #1e293b !important;
+}
+
+.admin-table thead,
+.orders-table thead,
+.data-table thead {
+    background: #334155 !important;
+}
+
+.admin-table tbody tr:hover,
+.orders-table tbody tr:hover,
+.data-table tbody tr:hover {
+    background: #334155 !important;
+}
+
+/* Forms */
+.add-product-form,
+.add-coupon-form,
+.product-form,
+.profile-form,
+.settings-form {
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+}
+
+/* No data messages */
+.no-data {
+    background: #1e293b !important;
+    color: #94a3b8 !important;
+}
+
+/* Analytics */
+.analytics-card,
+.metric-card,
+.chart-card {
+    background: #1e293b !important;
+    color: #e2e8f0 !important;
+    border: 1px solid #334155 !important;
+}
+
+/* Ensure icons and emojis are visible */
+.icon:not(.navbar *),
+.stat-icon:not(.navbar *) {
+    opacity: 0.9;
+}
+
+/* Product images */
+.product-card img {
+    background: #334155;
+    border: 1px solid #475569;
+}
+
+/* Footer */
+footer {
+    background: #1e293b !important;
+    color: #e2e8f0 !important;
+    border-top: 1px solid #334155 !important;
+}
+
+/* Shop category banners */
+.shopcategory-banner {
+    border: 1px solid #334155;
+}
+
+/* Breadcrumbs */
+.breadcrumb,
+.breadcrumbs {
+    background: #1e293b !important;
+    color: #94a3b8 !important;
+}
+
+/* Pagination */
+.pagination {
+    background: #1e293b !important;
+}
+
+.pagination button {
+    background: #334155 !important;
+    color: #e2e8f0 !important;
+    border-color: #475569 !important;
+}
+
+.pagination button:hover {
+    background: #475569 !important;
+}
+
+/* Cart items */
+.cartitems {
+    background: #0f172a !important;
+}
+
+.cartitems-format,
+.cartitems-format-main {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+}
+
+/* Checkout */
+.checkout {
+    background: #0f172a !important;
+}
+
+.checkout-form {
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+}
+
+/* Profile page */
+.profile-page {
+    background: #0f172a !important;
+}
+
+/* Orders page */
+.orders-page {
+    background: #0f172a !important;
+}
+
+.order-card {
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+}
+
+/* Wishlist */
+.wishlist {
+    background: #0f172a !important;
+}
+
+/* Login/Signup */
+.loginsignup {
+    background: #0f172a !important;
+}
+
+.loginsignup-container {
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+}
+
+/* Product display */
+.productdisplay {
+    background: #0f172a !important;
+}
+
+.productdisplay-left,
+.productdisplay-right {
+    background: transparent !important;
+}
+
+/* Related products */
+.relatedproducts {
+    background: #0f172a !important;
+}
+
+/* Description box */
+.descriptionbox {
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+}
+
+/* Newsletter */
+.newsletter {
+    background: #1e293b !important;
+}
+
+/* Popular items */
+.popular {
+    background: #0f172a !important;
+}
+
+/* New collections */
+.new-collections {
+    background: #0f172a !important;
+}
+
+/* Hero section */
+.hero {
+    background: #0f172a !important;
+}
+
+/* Offers */
+.offers {
+    background: #1e293b !important;
+}

@@ -1,0 +1,563 @@
+/* Mobile-First Navbar Styles */
+
+/* Base Navbar - Mobile */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+}
+
+/* Hamburger Menu - Mobile Only */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: var(--z-fixed);
+}
+
+.hamburger span {
+    width: 24px;
+    height: 3px;
+    background: var(--color-text-primary);
+    border-radius: 2px;
+    transition: all var(--transition-base);
+    transform-origin: center;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Logo */
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.nav-logo img {
+    width: 40px;
+    height: auto;
+}
+
+.nav-logo p {
+    color: var(--color-text-primary);
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Desktop Menu - Hidden on Mobile */
+.desktop-menu {
+    display: none;
+}
+
+/* Cart & Login Section */
+.nav-login-cart {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.desktop-only {
+    display: none;
+}
+
+.wishlist-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.wishlist-icon {
+    width: 28px;
+    height: 28px;
+    color: #ff4141;
+    transition: all 0.3s ease;
+}
+
+.wishlist-link:hover .wishlist-icon {
+    transform: scale(1.1);
+}
+
+.cart-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+}
+
+.cart-link img {
+    width: 28px;
+    height: 28px;
+}
+
+.nav-cart-count {
+    position: absolute;
+    top: -4px;
+    right: -8px;
+    min-width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 6px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    background: var(--color-primary);
+    color: white;
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: var(--z-modal-backdrop);
+    animation: fadeIn var(--transition-base);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Mobile Menu Drawer */
+.mobile-menu-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    max-width: 85vw;
+    background: white;
+    z-index: var(--z-modal);
+    transform: translateX(-100%);
+    transition: transform var(--transition-base);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-menu-drawer.open {
+    transform: translateX(0);
+}
+
+/* Mobile Menu Header */
+.mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.mobile-menu-header h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--color-text-primary);
+}
+
+.close-btn {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    font-size: 32px;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    padding: 0;
+}
+
+/* Mobile Menu List */
+.mobile-menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.mobile-menu-list li {
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+.mobile-menu-list li a {
+    display: block;
+    padding: 16px 20px;
+    color: var(--color-text-primary);
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    transition: background var(--transition-fast);
+}
+
+.mobile-menu-list li a:active {
+    background: var(--color-bg-secondary);
+}
+
+/* Mobile Menu Footer */
+.mobile-menu-footer {
+    padding: 20px;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.mobile-user-info {
+    padding: 12px 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+}
+
+.mobile-btn {
+    width: 100%;
+    height: 48px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    border: none;
+}
+
+.mobile-btn.login-btn,
+.mobile-btn.profile-btn {
+    background: var(--color-primary);
+    color: white;
+}
+
+.mobile-btn.login-btn:active,
+.mobile-btn.profile-btn:active {
+    background: var(--color-primary-dark);
+}
+
+.mobile-btn.logout-btn {
+    background: white;
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+}
+
+.mobile-btn.logout-btn:active {
+    background: var(--color-bg-secondary);
+}
+
+/* Tablet Styles (768px+) */
+@media (min-width: 768px) {
+    .navbar {
+        padding: 16px 24px;
+    }
+
+    .hamburger {
+        display: none;
+    }
+
+    .nav-logo img {
+        width: 50px;
+    }
+
+    .nav-logo p {
+        font-size: 28px;
+    }
+
+    .desktop-menu {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        gap: 32px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .desktop-menu li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        cursor: pointer;
+    }
+
+    .desktop-menu li a {
+        color: var(--color-text-secondary);
+        font-size: 18px;
+        font-weight: 500;
+        text-decoration: none;
+        padding: 8px 12px;
+        transition: color var(--transition-fast);
+    }
+
+    .desktop-menu li a:hover {
+        color: var(--color-text-primary);
+    }
+
+    .desktop-menu hr {
+        border: none;
+        width: 80%;
+        height: 3px;
+        border-radius: 10px;
+        background: var(--color-primary);
+        margin: 0;
+    }
+
+    .desktop-only {
+        display: flex;
+    }
+
+    .nav-login-cart {
+        gap: 24px;
+    }
+
+    .wishlist-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .cart-link img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .nav-user-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .nav-username {
+        color: var(--color-text-primary);
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .nav-user-info button {
+        height: 44px;
+        padding: 0 20px;
+        border-radius: 22px;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all var(--transition-fast);
+    }
+
+    .nav-user-info .orders-btn {
+        background: #10b981;
+        color: white;
+        border: 1px solid #10b981;
+    }
+
+    .nav-user-info .orders-btn:hover {
+        background: #059669;
+    }
+
+    .nav-user-info .profile-btn {
+        background: #667eea;
+        color: white;
+        border: 1px solid #667eea;
+    }
+
+    .nav-user-info .profile-btn:hover {
+        background: #5568d3;
+    }
+
+    .nav-user-info button:not(.profile-btn):not(.orders-btn) {
+        background: white;
+        color: var(--color-text-primary);
+        border: 1px solid var(--color-border);
+    }
+
+    .nav-user-info button:not(.profile-btn):not(.orders-btn):hover {
+        background: var(--color-bg-secondary);
+    }
+
+    .nav-login-cart>a>button {
+        height: 44px;
+        padding: 0 24px;
+        border-radius: 22px;
+        color: var(--color-text-primary);
+        font-size: 16px;
+        font-weight: 500;
+        background: white;
+        border: 1px solid var(--color-border);
+        cursor: pointer;
+        transition: all var(--transition-fast);
+    }
+
+    .nav-login-cart>a>button:hover {
+        background: var(--color-bg-secondary);
+    }
+
+    /* Hide mobile menu drawer on tablet+ */
+    .mobile-menu-drawer,
+    .mobile-menu-overlay {
+        display: none;
+    }
+}
+
+/* Desktop Styles (1024px+) */
+@media (min-width: 1024px) {
+    .navbar {
+        padding: 16px 48px;
+    }
+
+    .nav-logo p {
+        font-size: 32px;
+    }
+
+    .desktop-menu {
+        gap: 40px;
+    }
+
+    .desktop-menu li a {
+        font-size: 20px;
+    }
+
+    .nav-login-cart {
+        gap: 32px;
+    }
+
+    .nav-user-info {
+        gap: 16px;
+    }
+}
+
+/* Large Desktop (1280px+) */
+@media (min-width: 1280px) {
+    .navbar {
+        padding: 16px 64px;
+    }
+
+    .desktop-menu {
+        gap: 50px;
+    }
+}
+
+/* Role Badge Styles */
+.role-badge,
+.role-badge-small {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-left: 8px;
+}
+
+.role-badge-small {
+    font-size: 10px;
+    padding: 2px 6px;
+}
+
+.role-badge.admin,
+.role-badge-small.admin {
+    background: #dc2626;
+    color: white;
+}
+
+.role-badge.seller,
+.role-badge-small.seller {
+    background: #f59e0b;
+    color: white;
+}
+
+.role-badge.customer,
+.role-badge-small.customer {
+    background: #10b981;
+    color: white;
+}
+
+.role-badge.delivery,
+.role-badge-small.delivery {
+    background: #3b82f6;
+    color: white;
+}
+
+.role-badge.support,
+.role-badge-small.support {
+    background: #8b5cf6;
+    color: white;
+}
+
+.role-badge.finance,
+.role-badge-small.finance {
+    background: #06b6d4;
+    color: white;
+}
+
+/* Admin Button */
+.nav-user-info .admin-btn {
+    background: #dc2626;
+    color: white;
+    border: 1px solid #dc2626;
+}
+
+.nav-user-info .admin-btn:hover {
+    background: #b91c1c;
+}
+
+/* Seller Button */
+.nav-user-info .seller-btn {
+    background: #10b981;
+    color: white;
+    border: 1px solid #10b981;
+}
+
+.nav-user-info .seller-btn:hover {
+    background: #059669;
+}
+
+/* Mobile User Info with Role Badge */
+.mobile-user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.mobile-user-info .role-badge {
+    align-self: flex-start;
+}

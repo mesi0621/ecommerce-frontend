@@ -1,0 +1,36 @@
+.permission-guard-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #666;
+    font-size: 14px;
+}
+
+.permission-guard-denied {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: 4px;
+    color: #856404;
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+/* Dark theme support */
+[data-theme="dark"] .permission-guard-denied {
+    background-color: #3d3416;
+    border-color: #ffc107;
+    color: #ffc107;
+}
+
+/* Inline denied message (for buttons, etc.) */
+.permission-guard-denied.inline {
+    display: inline-flex;
+    padding: 8px 12px;
+    margin: 0 5px;
+    font-size: 12px;
+}

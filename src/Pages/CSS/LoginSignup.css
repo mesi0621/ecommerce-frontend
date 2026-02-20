@@ -1,0 +1,268 @@
+/* Mobile-First LoginSignup Styles */
+
+.loginsignup {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #fce3fe 0%, #f0e6ff 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-md);
+}
+
+.loginsignup-container {
+    width: 100%;
+    max-width: 100%;
+    background: white;
+    padding: var(--space-xl) var(--space-lg);
+    box-shadow: var(--shadow-lg);
+    border-radius: var(--radius-lg);
+}
+
+.loginsignup-container h1 {
+    font-size: var(--font-heading-2);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--space-lg) 0;
+    text-align: center;
+}
+
+/* Form Fields */
+.loginsignup-fields {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+/* Input Group for Error Messages */
+.input-group {
+    position: relative;
+    width: 100%;
+}
+
+
+
+.loginsignup-fields input {
+    width: 100%;
+    height: var(--touch-target-comfortable);
+    padding: 0 var(--space-md);
+    border: 2px solid var(--color-border);
+    outline: none;
+    color: var(--color-text-primary);
+    font-size: var(--font-base);
+    border-radius: var(--radius-sm);
+    transition: border-color var(--transition-fast);
+}
+
+
+
+.loginsignup-fields input:focus {
+    border-color: var(--color-primary);
+}
+
+.loginsignup-fields input.error {
+    border-color: var(--color-error);
+    background-color: #fff5f5;
+}
+
+/* Error Messages */
+.error-message {
+    color: var(--color-error);
+    font-size: var(--font-xs);
+    margin-top: var(--space-xs);
+    display: block;
+    text-align: left;
+}
+
+.general-error {
+    background-color: #fff5f5;
+    border: 1px solid var(--color-error);
+    padding: var(--space-md);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-lg);
+    text-align: center;
+    font-size: var(--font-sm);
+}
+
+.terms-error {
+    margin-top: var(--space-sm);
+    text-align: center;
+}
+
+/* Continue Button - Touch Friendly */
+.loginsignup-container button {
+    width: 100%;
+    height: var(--touch-target-large);
+    color: white;
+    background: var(--color-primary);
+    margin-top: var(--space-lg);
+    border: none;
+    font-size: var(--font-base);
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.loginsignup-container button:active:not(:disabled) {
+    background: var(--color-primary-dark);
+    transform: scale(0.98);
+}
+
+.loginsignup-container button:disabled {
+    background: var(--color-text-tertiary);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Login/Signup Toggle */
+.loginsignup-login {
+    margin-top: var(--space-lg);
+    color: var(--color-text-secondary);
+    font-size: var(--font-sm);
+    font-weight: 500;
+    text-align: center;
+}
+
+.loginsignup-login span {
+    color: var(--color-primary);
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-left: var(--space-xs);
+}
+
+.loginsignup-login span:active {
+    color: var(--color-primary-dark);
+}
+
+/* Forgot Password Link */
+.loginsignup-forgot {
+    margin-top: var(--space-md);
+    color: var(--color-text-secondary);
+    font-size: var(--font-sm);
+    font-weight: 500;
+    text-align: center;
+}
+
+.loginsignup-forgot span {
+    color: #3b82f6;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.loginsignup-forgot span:hover {
+    color: #2563eb;
+}
+
+.loginsignup-forgot span:active {
+    color: #1d4ed8;
+}
+
+/* Terms Agreement - Touch Friendly */
+.loginsignup-agree {
+    display: flex;
+    align-items: flex-start;
+    margin-top: var(--space-lg);
+    gap: var(--space-sm);
+    color: var(--color-text-secondary);
+    font-size: var(--font-sm);
+    font-weight: 500;
+}
+
+.loginsignup-agree input[type="checkbox"] {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.loginsignup-agree p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Tablet Styles (768px+) */
+@media (min-width: 768px) {
+    .loginsignup {
+        padding: var(--space-xl);
+    }
+
+    .loginsignup-container {
+        max-width: 500px;
+        padding: var(--space-2xl) var(--space-xl);
+    }
+
+    .loginsignup-container h1 {
+        font-size: var(--font-heading-1);
+        margin-bottom: var(--space-xl);
+    }
+
+    .loginsignup-fields {
+        gap: var(--space-lg);
+    }
+
+    .loginsignup-fields input {
+        height: 58px;
+        font-size: var(--font-lg);
+        padding: 0 var(--space-lg);
+    }
+
+
+
+    .error-message {
+        font-size: var(--font-sm);
+    }
+
+    .loginsignup-container button {
+        height: 58px;
+        font-size: var(--font-lg);
+        margin-top: var(--space-xl);
+    }
+
+    .loginsignup-login {
+        font-size: var(--font-base);
+    }
+
+    .loginsignup-agree {
+        font-size: var(--font-base);
+    }
+
+    .loginsignup-agree input[type="checkbox"] {
+        width: 22px;
+        height: 22px;
+    }
+}
+
+/* Desktop Styles (1024px+) */
+@media (min-width: 1024px) {
+    .loginsignup-container {
+        max-width: 580px;
+        padding: var(--space-3xl) 60px;
+    }
+
+    .loginsignup-container button:hover:not(:disabled) {
+        background: var(--color-primary-dark);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .loginsignup-login span:hover {
+        color: var(--color-primary-dark);
+    }
+
+    .loginsignup-fields input {
+        height: 64px;
+    }
+
+
+
+    .loginsignup-container button {
+        height: 64px;
+    }
+}

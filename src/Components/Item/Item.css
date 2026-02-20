@@ -1,0 +1,111 @@
+/* Mobile-First Product Card Styles */
+
+.item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.item-image-container {
+    position: relative;
+    width: 100%;
+}
+
+.item-image-container img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    transition: transform var(--transition-base);
+}
+
+.wishlist-button-container {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 10;
+}
+
+.item p {
+    margin: 8px 0 4px 0;
+    font-size: var(--font-sm);
+    font-weight: 500;
+    color: var(--color-text-primary);
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.item-prices {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 4px;
+}
+
+.item-price-new {
+    color: var(--color-text-primary);
+    font-size: var(--font-base);
+    font-weight: 600;
+}
+
+.item-price-old {
+    color: var(--color-text-tertiary);
+    font-size: var(--font-sm);
+    font-weight: 500;
+    text-decoration: line-through;
+}
+
+/* Touch feedback for mobile */
+.item:active {
+    opacity: 0.8;
+}
+
+/* Tablet Styles (768px+) */
+@media (min-width: 768px) {
+    .item p {
+        font-size: var(--font-base);
+        margin: 12px 0 6px 0;
+    }
+
+    .item-prices {
+        gap: 16px;
+        margin-top: 6px;
+    }
+
+    .item-price-new {
+        font-size: var(--font-lg);
+    }
+
+    .item-price-old {
+        font-size: var(--font-base);
+    }
+}
+
+/* Desktop Styles (1024px+) - Add hover effects */
+@media (min-width: 1024px) {
+    .item:hover .item-image-container img {
+        transform: scale(1.05);
+    }
+
+    .item:active {
+        opacity: 1;
+    }
+
+    .item p {
+        font-size: var(--font-lg);
+    }
+
+    .item-price-new {
+        font-size: var(--font-xl);
+    }
+
+    .item-price-old {
+        font-size: var(--font-lg);
+    }
+}

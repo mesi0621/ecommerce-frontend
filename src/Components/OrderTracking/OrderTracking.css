@@ -1,0 +1,293 @@
+.order-tracking {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 24px;
+}
+
+.tracking-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #e5e5e5;
+}
+
+.tracking-header h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #171717;
+    margin: 0;
+}
+
+.status-badge {
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.status-badge.pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.status-badge.confirmed {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+.status-badge.processing {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.status-badge.shipped {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-badge.delivered {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-badge.cancelled {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* Cancelled State */
+.tracking-cancelled {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.cancelled-icon {
+    font-size: 64px;
+    margin-bottom: 16px;
+}
+
+.tracking-cancelled h4 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #721c24;
+    margin-bottom: 8px;
+}
+
+.cancelled-date {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 12px;
+}
+
+.cancelled-reason {
+    font-size: 14px;
+    color: #171717;
+    background: #f8d7da;
+    padding: 12px;
+    border-radius: 6px;
+    margin-top: 16px;
+}
+
+/* Timeline */
+.tracking-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.timeline-step {
+    display: flex;
+    gap: 16px;
+    position: relative;
+}
+
+.step-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.step-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    background: #f5f5f5;
+    border: 3px solid #e5e5e5;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.step-line {
+    width: 3px;
+    flex: 1;
+    background: #e5e5e5;
+    min-height: 40px;
+    transition: all 0.3s ease;
+}
+
+.step-content {
+    flex: 1;
+    padding-bottom: 32px;
+}
+
+.step-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #171717;
+    margin: 0 0 4px 0;
+}
+
+.step-date {
+    font-size: 13px;
+    color: #666;
+    margin: 0 0 4px 0;
+}
+
+.step-note {
+    font-size: 13px;
+    color: #171717;
+    margin: 4px 0 0 0;
+    font-style: italic;
+}
+
+.step-pending {
+    font-size: 13px;
+    color: #999;
+    margin: 0;
+}
+
+/* Step States */
+.timeline-step.completed .step-icon {
+    background: #d4edda;
+    border-color: #28a745;
+}
+
+.timeline-step.completed .step-line {
+    background: #28a745;
+}
+
+.timeline-step.current .step-icon {
+    background: #cce5ff;
+    border-color: #007bff;
+    animation: pulse 2s infinite;
+}
+
+.timeline-step.current .step-label {
+    color: #007bff;
+}
+
+.timeline-step.upcoming .step-icon {
+    background: #f5f5f5;
+    border-color: #e5e5e5;
+    opacity: 0.6;
+}
+
+.timeline-step.upcoming .step-label {
+    color: #999;
+}
+
+.timeline-step.inactive .step-icon {
+    background: #f5f5f5;
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.4);
+    }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 8px rgba(0, 123, 255, 0);
+    }
+}
+
+/* Additional Info */
+.tracking-number,
+.estimated-delivery {
+    margin-top: 20px;
+    padding: 12px;
+    background: #f9f9f9;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #171717;
+}
+
+.tracking-number strong,
+.estimated-delivery strong {
+    color: #171717;
+    margin-right: 8px;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    .order-tracking {
+        padding: 20px 16px;
+    }
+
+    .tracking-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .tracking-header h3 {
+        font-size: 18px;
+    }
+
+    .step-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .step-label {
+        font-size: 15px;
+    }
+
+    .cancelled-icon {
+        font-size: 48px;
+    }
+
+    .tracking-cancelled h4 {
+        font-size: 20px;
+    }
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+    .order-tracking {
+        padding: 32px;
+    }
+
+    .tracking-header h3 {
+        font-size: 22px;
+    }
+
+    .status-badge {
+        font-size: 15px;
+        padding: 8px 20px;
+    }
+
+    .step-label {
+        font-size: 17px;
+    }
+
+    .step-date,
+    .step-note {
+        font-size: 14px;
+    }
+}

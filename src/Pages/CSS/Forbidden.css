@@ -1,0 +1,135 @@
+.forbidden-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+}
+
+.forbidden-content {
+    background: white;
+    border-radius: 20px;
+    padding: 60px 40px;
+    text-align: center;
+    max-width: 600px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.forbidden-icon {
+    font-size: 120px;
+    margin-bottom: 20px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.forbidden-content h1 {
+    font-size: 72px;
+    margin: 0 0 10px;
+    color: #333;
+    font-weight: 700;
+}
+
+.forbidden-content h2 {
+    font-size: 32px;
+    margin: 0 0 20px;
+    color: #666;
+    font-weight: 600;
+}
+
+.forbidden-content p {
+    font-size: 18px;
+    color: #666;
+    margin: 0 0 15px;
+    line-height: 1.6;
+}
+
+.forbidden-description {
+    font-size: 16px;
+    color: #999;
+    margin-bottom: 40px;
+}
+
+.forbidden-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 14px 32px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.btn-secondary:hover {
+    background: #e0e0e0;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .forbidden-content {
+        padding: 40px 30px;
+    }
+
+    .forbidden-icon {
+        font-size: 80px;
+    }
+
+    .forbidden-content h1 {
+        font-size: 56px;
+    }
+
+    .forbidden-content h2 {
+        font-size: 24px;
+    }
+
+    .forbidden-content p {
+        font-size: 16px;
+    }
+
+    .forbidden-description {
+        font-size: 14px;
+    }
+
+    .forbidden-actions {
+        flex-direction: column;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+    }
+}

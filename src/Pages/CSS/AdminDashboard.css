@@ -1,0 +1,650 @@
+.admin-dashboard {
+    display: flex;
+    min-height: 100vh;
+    background: #f5f5f5;
+}
+
+.admin-sidebar {
+    width: 260px;
+    background: linear-gradient(135deg, #ff4141 0%, #e63939 100%);
+    color: white;
+    padding: 30px 20px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.admin-sidebar h2 {
+    font-size: 24px;
+    margin: 0 0 30px 0;
+    text-align: center;
+}
+
+.admin-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.admin-nav button {
+    padding: 14px 18px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    text-align: left;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: all 0.3s;
+    backdrop-filter: blur(10px);
+}
+
+.admin-nav button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(5px);
+}
+
+.admin-nav button.active {
+    background: white;
+    color: #ff4141;
+    font-weight: 600;
+}
+
+.admin-content {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    font-size: 18px;
+    color: #666;
+}
+
+.overview-section h2,
+.users-section h2,
+.products-section h2,
+.orders-section h2 {
+    font-size: 28px;
+    color: #333;
+    margin: 0 0 30px 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card.highlight {
+    background: linear-gradient(135deg, #ff4141 0%, #e63939 100%);
+    color: white;
+}
+
+.stat-icon {
+    font-size: 40px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 65, 65, 0.1);
+    border-radius: 12px;
+}
+
+.stat-card.highlight .stat-icon {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.stat-info h3 {
+    font-size: 32px;
+    margin: 0 0 5px 0;
+    font-weight: 700;
+}
+
+.stat-info p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.stat-card.highlight .stat-info p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.table-container {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table thead {
+    background: #f9f9f9;
+}
+
+.admin-table th {
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    color: #333;
+    border-bottom: 2px solid #eee;
+}
+
+.admin-table td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    color: #666;
+}
+
+.admin-table tbody tr:hover {
+    background: #f9f9f9;
+}
+
+.role-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.role-badge.admin {
+    background: #ff4444;
+    color: white;
+}
+
+.role-badge.seller {
+    background: #4CAF50;
+    color: white;
+}
+
+.role-badge.customer {
+    background: #2196F3;
+    color: white;
+}
+
+.role-badge.delivery {
+    background: #FF9800;
+    color: white;
+}
+
+.role-badge.support {
+    background: #9C27B0;
+    color: white;
+}
+
+.role-badge.finance {
+    background: #00BCD4;
+    color: white;
+}
+
+.status-active {
+    color: #4CAF50;
+    font-weight: 600;
+}
+
+.status-inactive {
+    color: #ff4444;
+    font-weight: 600;
+}
+
+.role-select,
+.status-select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.role-select:focus,
+.status-select:focus {
+    outline: none;
+    border-color: #ff4141;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-info h3 {
+    font-size: 18px;
+    color: #333;
+    margin: 0 0 10px 0;
+}
+
+.product-category {
+    color: #999;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin: 0 0 10px 0;
+}
+
+.product-price {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ff4141;
+    margin: 0 0 10px 0;
+}
+
+.product-seller {
+    font-size: 14px;
+    color: #666;
+    margin: 0 0 15px 0;
+}
+
+.approve-btn {
+    width: 100%;
+    padding: 12px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.approve-btn:hover {
+    background: #45a049;
+    transform: scale(1.02);
+}
+
+.no-data {
+    text-align: center;
+    padding: 60px 20px;
+    font-size: 18px;
+    color: #999;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-badge.pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.status-badge.confirmed {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+.status-badge.processing {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.status-badge.shipped {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-badge.delivered {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-badge.cancelled {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.payment-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.payment-badge.pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.payment-badge.completed {
+    background: #d4edda;
+    color: #155724;
+}
+
+.payment-badge.failed {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+@media (max-width: 768px) {
+    .admin-dashboard {
+        flex-direction: column;
+    }
+
+    .admin-sidebar {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .admin-nav {
+        flex-direction: row;
+        overflow-x: auto;
+    }
+
+    .admin-nav button {
+        white-space: nowrap;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .table-container {
+        overflow-x: scroll;
+    }
+}
+
+/* Form Styles */
+.add-product-form,
+.add-coupon-form {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.add-product-form h3,
+.add-coupon-form h3 {
+    margin: 0 0 20px 0;
+    color: #333;
+    font-size: 20px;
+}
+
+.add-product-form form,
+.add-coupon-form form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.add-product-form input,
+.add-product-form select,
+.add-product-form textarea,
+.add-coupon-form input,
+.add-coupon-form select {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.add-product-form textarea {
+    grid-column: 1 / -1;
+    min-height: 80px;
+    resize: vertical;
+}
+
+.add-btn {
+    grid-column: 1 / -1;
+    padding: 12px 24px;
+    background: #10b981;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.add-btn:hover {
+    background: #059669;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+/* Button Styles */
+.delete-btn {
+    padding: 8px 16px;
+    background: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.delete-btn:hover {
+    background: #dc2626;
+}
+
+.activate-btn,
+.deactivate-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
+    transition: all 0.3s;
+}
+
+.activate-btn {
+    background: #10b981;
+    color: white;
+}
+
+.activate-btn:hover {
+    background: #059669;
+}
+
+.deactivate-btn {
+    background: #f59e0b;
+    color: white;
+}
+
+.deactivate-btn:hover {
+    background: #d97706;
+}
+
+/* Analytics Section */
+.analytics-section {
+    padding: 30px;
+}
+
+.analytics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.analytics-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.analytics-card h3 {
+    margin: 0 0 15px 0;
+    color: #ff4141;
+    font-size: 18px;
+}
+
+.analytics-card p {
+    margin: 8px 0;
+    color: #666;
+    font-size: 14px;
+}
+
+/* Audit Section */
+.audit-section {
+    padding: 30px;
+}
+
+.audit-section .admin-table {
+    font-size: 13px;
+}
+
+.audit-section .admin-table td {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* No Data Message */
+.no-data {
+    text-align: center;
+    padding: 40px;
+    color: #999;
+    font-size: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .admin-dashboard {
+        flex-direction: column;
+    }
+
+    .admin-sidebar {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .admin-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .admin-nav button {
+        flex: 1 1 calc(50% - 5px);
+        min-width: 140px;
+    }
+
+    .add-product-form form,
+    .add-coupon-form form {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid,
+    .analytics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .table-container {
+        overflow-x: auto;
+    }
+}
+
+/* Bank Transfer Verification Styles */
+.bank-transfers-section {
+    padding: 20px;
+}
+
+.view-receipt-btn {
+    padding: 8px 16px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.view-receipt-btn:hover {
+    background: #45a049;
+    transform: scale(1.05);
+}
+
+.reject-btn {
+    padding: 8px 16px;
+    background: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 8px;
+    transition: all 0.3s;
+}
+
+.reject-btn:hover {
+    background: #da190b;
+    transform: scale(1.05);
+}
+
+.bank-transfers-section .admin-table td {
+    vertical-align: middle;
+}
+
+.bank-transfers-section .admin-table td button {
+    margin: 2px;
+}
