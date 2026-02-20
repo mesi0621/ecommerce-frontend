@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import productAPI from '../api/productAPI';
-import { getProductImage } from '../utils/imageHelper';
 
 /**
  * Hook for popular/best-selling products
@@ -23,13 +22,8 @@ export const usePopular = (limit = 10) => {
             const response = await productAPI.getPopular(limit);
             const productsData = response.data.data || [];
 
-            // Convert image filenames to actual image paths
-            const productsWithImages = productsData.map(product => ({
-                ...product,
-                image: getProductImage(product.image)
-            }));
-
-            setProducts(productsWithImages);
+            // Use products directly - external URLs work as-is
+            setProducts(productsData);
         } catch (err) {
             setError(err.response?.data?.error || 'Failed to fetch popular products');
             console.error('Error fetching popular products:', err);
@@ -67,13 +61,8 @@ export const useTrending = (limit = 10, days = 7) => {
             const response = await productAPI.getTrending(limit, days);
             const productsData = response.data.data || [];
 
-            // Convert image filenames to actual image paths
-            const productsWithImages = productsData.map(product => ({
-                ...product,
-                image: getProductImage(product.image)
-            }));
-
-            setProducts(productsWithImages);
+            // Use products directly - external URLs work as-is
+            setProducts(productsData);
         } catch (err) {
             setError(err.response?.data?.error || 'Failed to fetch trending products');
             console.error('Error fetching trending products:', err);

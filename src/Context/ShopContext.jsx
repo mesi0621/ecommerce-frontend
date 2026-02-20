@@ -2,7 +2,6 @@ import React, { createContext, useState, useEffect } from 'react';
 import productAPI from '../api/productAPI';
 import cartAPI from '../api/cartAPI';
 import interactionAPI from '../api/interactionAPI';
-import { getProductImage } from '../utils/imageHelper';
 
 export const ShopContext = createContext(null);
 
@@ -104,18 +103,10 @@ const ShopContextProvider = (props) => {
             const products = response.data.data || [];
             console.log(`Received ${products.length} products from backend`);
 
-            // Add image URLs to products
-            const productsWithImages = products.map(product => {
-                const imagePath = getProductImage(product.image);
-                console.log(`Product ${product.id}: ${product.image} -> ${imagePath}`);
-                return {
-                    ...product,
-                    image: imagePath
-                };
-            });
-
-            console.log('Products with images:', productsWithImages.slice(0, 2));
-            setAllProducts(productsWithImages);
+            // Use products directly without processing images
+            // External URLs will work as-is
+            console.log('Products loaded:', products.slice(0, 2));
+            setAllProducts(products);
         } catch (error) {
             console.error('Error fetching products:', error);
             console.error('Error details:', error.response || error.message);

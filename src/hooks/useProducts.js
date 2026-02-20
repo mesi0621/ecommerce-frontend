@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import productAPI from '../api/productAPI';
-import { getProductImage } from '../utils/imageHelper';
 
 /**
  * Hook for fetching products with filters
@@ -23,13 +22,8 @@ export const useProducts = (filters = {}) => {
             const response = await productAPI.getAll(filters);
             const productsData = response.data.data || [];
 
-            // Convert image filenames to actual image paths
-            const productsWithImages = productsData.map(product => ({
-                ...product,
-                image: getProductImage(product.image)
-            }));
-
-            setProducts(productsWithImages);
+            // Use products directly - external URLs work as-is
+            setProducts(productsData);
         } catch (err) {
             setError(err.response?.data?.error || 'Failed to fetch products');
             console.error('Error fetching products:', err);
@@ -68,11 +62,7 @@ export const useProduct = (productId, userId = null) => {
             const response = await productAPI.getById(productId, userId);
             const productData = response.data.data;
 
-            // Convert image filename to actual image path
-            if (productData && productData.image) {
-                productData.image = getProductImage(productData.image);
-            }
-
+            // Use product directly - external URLs work as-is
             setProduct(productData);
         } catch (err) {
             setError(err.response?.data?.error || 'Failed to fetch product');

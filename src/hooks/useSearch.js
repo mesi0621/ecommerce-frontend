@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import productAPI from '../api/productAPI';
-import { getProductImage } from '../utils/imageHelper';
 
 /**
  * Hook for product search
@@ -21,13 +20,8 @@ export const useSearch = () => {
             const response = await productAPI.search(query, filters);
             const productsData = response.data.data || [];
 
-            // Convert image filenames to actual image paths
-            const productsWithImages = productsData.map(product => ({
-                ...product,
-                image: getProductImage(product.image)
-            }));
-
-            setResults(productsWithImages);
+            // Use products directly - external URLs work as-is
+            setResults(productsData);
 
             // Handle suggestions for zero results
             if (response.data.suggestions) {
