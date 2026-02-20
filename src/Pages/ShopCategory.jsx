@@ -5,7 +5,6 @@ import SearchBar from '../Components/SearchBar/SearchBar';
 import FilterSidebar from '../Components/FilterSidebar/FilterSidebar';
 import SortDropdown from '../Components/SortDropdown/SortDropdown';
 import productAPI from '../api/productAPI';
-import { getProductImage } from '../utils/imageHelper';
 
 const ShopCategory = (props) => {
   const [products, setProducts] = useState([]);
@@ -56,14 +55,9 @@ const ShopCategory = (props) => {
       console.log('ShopCategory - API Response:', response.data);
       console.log('ShopCategory - Products count:', response.data.data?.length || 0);
 
-      // Process images using the helper function
+      // Use products directly - external URLs work as-is
       const productsFromAPI = response.data.data || [];
-      const productsWithImages = productsFromAPI.map(product => ({
-        ...product,
-        image: getProductImage(product.image)
-      }));
-
-      setProducts(productsWithImages);
+      setProducts(productsFromAPI);
     } catch (err) {
       console.error('Error fetching products:', err);
       console.error('Error details:', err.response?.data || err.message);
