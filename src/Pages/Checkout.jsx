@@ -9,7 +9,7 @@ const Checkout = () => {
     const navigate = useNavigate();
     const { all_product, cartItems, getTotalCartAmount, userId, refreshCart } = useContext(ShopContext);
     const toast = useToastContext();
-    const { isAuthenticated, isGuest } = useAuth();
+    const { isAuthenticated } = useAuth();
     const [loading, setLoading] = useState(false);
     const [paymentMethods, setPaymentMethods] = useState([]);
     const [selectedPayment, setSelectedPayment] = useState('');
@@ -27,7 +27,7 @@ const Checkout = () => {
 
     useEffect(() => {
         // Guest restriction - require login to access checkout
-        if (!isAuthenticated || isGuest()) {
+        if (!isAuthenticated) {
             toast.info('Please login to proceed to checkout');
             navigate('/login', { state: { from: '/checkout' } });
             return;
@@ -42,11 +42,12 @@ const Checkout = () => {
 
         // Fetch payment methods
         fetchPaymentMethods();
-    }, [isAuthenticated, isGuest, getTotalCartAmount, navigate, toast]);
+    }, [isAuthenticated, getTotalCartAmount, navigate, toast]);
 
     const fetchPaymentMethods = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/payments/methods');
+            const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+            const response = await fetch(`${apiUrl}/payments/methods`);
             const data = await response.json();
             if (data.success) {
                 setPaymentMethods(data.data);
@@ -161,12 +162,13 @@ const Checkout = () => {
 
         try {
             const token = localStorage.getItem('auth-token');
+            const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
             // STEP 1: Sync cart with backend before creating order
             console.log('🔄 Syncing cart with backend...');
             console.log('🔄 Frontend cart items:', cartItems);
 
-            const syncResponse = await fetch(`http://localhost:5000/api/cart/${userId}/sync`, {
+            const syncResponse = await fetch(`${apiUrl}/cart/${userId}/sync`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -192,7 +194,7 @@ const Checkout = () => {
             console.log('✅ Cart synchronized successfully');
 
             // STEP 2: Create order
-            const orderResponse = await fetch('http://localhost:5000/api/orders', {
+            const orderResponse = await fetch(`${apiUrl}/orders`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -220,7 +222,7 @@ const Checkout = () => {
                 formData.append('orderId', order._id);
                 formData.append('referenceCode', bankTransferDetails.referenceCode);
 
-                const uploadResponse = await fetch('http://localhost:5000/api/payments/bank-transfer/upload-receipt', {
+                const uploadResponse = await fetch(`${apiUrl}/payments/bank-transfer/upload-receipt`, {
                     method: 'POST',
                     headers: {
                         'Authorization': `Bearer ${token}`
@@ -236,7 +238,7 @@ const Checkout = () => {
 
             // STEP 4: Process payment
             console.log('🔄 About to process payment with method:', selectedPayment);
-            const paymentResponse = await fetch('http://localhost:5000/api/payments/process', {
+            const paymentResponse = await fetch(`${apiUrl}/payments/process`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
