@@ -115,9 +115,22 @@ const LoginSignup = () => {
           localStorage.removeItem('pendingCartItem');
         }
 
-        // Redirect back to where user came from, or home page
-        const from = location.state?.from || '/';
-        setTimeout(() => navigate(from), 1500);
+        // Redirect based on user role
+        const userRole = response.data.data.role;
+        let redirectPath = '/';
+
+        if (userRole === 'admin') {
+          redirectPath = '/admin';
+        } else if (userRole === 'seller') {
+          redirectPath = '/seller';
+        } else if (userRole === 'delivery') {
+          redirectPath = '/delivery';
+        } else {
+          // For customers, redirect back to where they came from, or home
+          redirectPath = location.state?.from || '/';
+        }
+
+        setTimeout(() => navigate(redirectPath), 1500);
       }
     } catch (error) {
       console.error('Login error:', error);
@@ -183,9 +196,22 @@ const LoginSignup = () => {
 
         console.log('✅ Signup successful - redirecting');
 
-        // Redirect back to where user came from, or home page
-        const from = location.state?.from || '/';
-        navigate(from);
+        // Redirect based on user role
+        const userRole = response.data.data.role;
+        let redirectPath = '/';
+
+        if (userRole === 'admin') {
+          redirectPath = '/admin';
+        } else if (userRole === 'seller') {
+          redirectPath = '/seller';
+        } else if (userRole === 'delivery') {
+          redirectPath = '/delivery';
+        } else {
+          // For customers, redirect back to where they came from, or home
+          redirectPath = location.state?.from || '/';
+        }
+
+        navigate(redirectPath);
       }
     } catch (error) {
       console.error('❌ Signup error:', error);
