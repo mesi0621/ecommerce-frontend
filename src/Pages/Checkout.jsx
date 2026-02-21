@@ -3,13 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { ShopContext } from '../Context/ShopContext';
 import { useToastContext } from '../Context/ToastContext';
 import './CSS/Checkout.css';
-import { useAuth } from '../contexts/AuthContext';
 
 const Checkout = () => {
     const navigate = useNavigate();
     const { all_product, cartItems, getTotalCartAmount, userId, refreshCart } = useContext(ShopContext);
     const toast = useToastContext();
-    const { isAuthenticated } = useAuth();
     const [loading, setLoading] = useState(false);
     const [paymentMethods, setPaymentMethods] = useState([]);
     const [selectedPayment, setSelectedPayment] = useState('');
@@ -26,13 +24,6 @@ const Checkout = () => {
     const [receiptPreview, setReceiptPreview] = useState(null);
 
     useEffect(() => {
-        // Guest restriction - require login to access checkout
-        if (!isAuthenticated) {
-            toast.info('Please login to proceed to checkout');
-            navigate('/login', { state: { from: '/checkout' } });
-            return;
-        }
-
         // Check if cart is empty
         if (getTotalCartAmount() === 0) {
             toast.warning('Your cart is empty!');
@@ -42,7 +33,7 @@ const Checkout = () => {
 
         // Fetch payment methods
         fetchPaymentMethods();
-    }, [isAuthenticated, getTotalCartAmount, navigate, toast]);
+    }, [getTotalCartAmount, navigate, toast]);
 
     const fetchPaymentMethods = async () => {
         try {
