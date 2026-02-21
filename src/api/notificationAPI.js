@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 class NotificationAPI {
     async getNotifications(page = 1, limit = 20, type = null, isRead = null) {
