@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './CSS/SellerDashboard.css';
 
+const API_BASE_URL = process.env.REACT_APP_API_URL || '${API_BASE_URL}';
+
 const SellerDashboard = () => {
     const [activeTab, setActiveTab] = useState('overview');
     const [loading, setLoading] = useState(false);
@@ -65,7 +67,7 @@ const SellerDashboard = () => {
     const fetchSellerProfile = async () => {
         try {
             const token = localStorage.getItem('auth-token');
-            const response = await fetch('http://localhost:5000/api/seller/profile', {
+            const response = await fetch('${API_BASE_URL}/seller/profile', {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const data = await response.json();
@@ -82,7 +84,7 @@ const SellerDashboard = () => {
             const token = localStorage.getItem('auth-token');
 
             // Fetch products
-            const productsRes = await fetch('http://localhost:5000/api/products/seller/my-products', {
+            const productsRes = await fetch('${API_BASE_URL}/products/seller/my-products', {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const productsData = await productsRes.json();
@@ -105,7 +107,7 @@ const SellerDashboard = () => {
     const fetchMyProducts = async () => {
         try {
             const token = localStorage.getItem('auth-token');
-            const response = await fetch('http://localhost:5000/api/products/seller/my-products', {
+            const response = await fetch('${API_BASE_URL}/products/seller/my-products', {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const data = await response.json();
@@ -120,7 +122,7 @@ const SellerDashboard = () => {
     const fetchMyOrders = async () => {
         try {
             const token = localStorage.getItem('auth-token');
-            const response = await fetch('http://localhost:5000/api/orders/seller/my-orders', {
+            const response = await fetch('${API_BASE_URL}/orders/seller/my-orders', {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const data = await response.json();
@@ -136,7 +138,7 @@ const SellerDashboard = () => {
     const fetchEarnings = async () => {
         try {
             const token = localStorage.getItem('auth-token');
-            const response = await fetch('http://localhost:5000/api/seller/earnings', {
+            const response = await fetch('${API_BASE_URL}/seller/earnings', {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const data = await response.json();
@@ -152,7 +154,7 @@ const SellerDashboard = () => {
         e.preventDefault();
         try {
             const token = localStorage.getItem('auth-token');
-            const response = await fetch('http://localhost:5000/api/products', {
+            const response = await fetch('${API_BASE_URL}/products', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -185,7 +187,7 @@ const SellerDashboard = () => {
     const handleUpdateProduct = async (productId, updates) => {
         try {
             const token = localStorage.getItem('auth-token');
-            const response = await fetch(`http://localhost:5000/api/products/${productId}`, {
+            const response = await fetch(`${API_BASE_URL}/products/${productId}`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -209,7 +211,7 @@ const SellerDashboard = () => {
 
         try {
             const token = localStorage.getItem('auth-token');
-            const response = await fetch(`http://localhost:5000/api/products/${productId}`, {
+            const response = await fetch(`${API_BASE_URL}/products/${productId}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${token}` }
             });
@@ -578,3 +580,4 @@ const SellerDashboard = () => {
 };
 
 export default SellerDashboard;
+

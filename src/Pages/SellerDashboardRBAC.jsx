@@ -4,6 +4,8 @@ import { useAuth } from '../contexts/AuthContext';
 import { SellerOnly } from '../Components/PermissionGuard';
 import './CSS/SellerDashboardRBAC.css';
 
+const API_BASE_URL = process.env.REACT_APP_API_URL || '${API_BASE_URL}';
+
 const SellerDashboardRBAC = () => {
     const navigate = useNavigate();
     const { user, role, isSeller, logout } = useAuth();
@@ -69,13 +71,13 @@ const SellerDashboardRBAC = () => {
             const token = localStorage.getItem('auth-token');
 
             // Fetch seller's products
-            const productsRes = await fetch('http://localhost:5000/api/products', {
+            const productsRes = await fetch('${API_BASE_URL}/products', {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const productsData = await productsRes.json();
 
             // Fetch seller's orders
-            const ordersRes = await fetch('http://localhost:5000/api/orders', {
+            const ordersRes = await fetch('${API_BASE_URL}/orders', {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const ordersData = await ordersRes.json();
@@ -101,7 +103,7 @@ const SellerDashboardRBAC = () => {
     const fetchProducts = async () => {
         try {
             const token = localStorage.getItem('auth-token');
-            const response = await fetch('http://localhost:5000/api/products', {
+            const response = await fetch('${API_BASE_URL}/products', {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const data = await response.json();
@@ -116,7 +118,7 @@ const SellerDashboardRBAC = () => {
     const fetchOrders = async () => {
         try {
             const token = localStorage.getItem('auth-token');
-            const response = await fetch('http://localhost:5000/api/orders', {
+            const response = await fetch('${API_BASE_URL}/orders', {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const data = await response.json();
@@ -131,7 +133,7 @@ const SellerDashboardRBAC = () => {
     const fetchProfile = async () => {
         try {
             const token = localStorage.getItem('auth-token');
-            const response = await fetch('http://localhost:5000/api/seller/profile', {
+            const response = await fetch('${API_BASE_URL}/seller/profile', {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const data = await response.json();
@@ -147,7 +149,7 @@ const SellerDashboardRBAC = () => {
         e.preventDefault();
         try {
             const token = localStorage.getItem('auth-token');
-            const response = await fetch('http://localhost:5000/api/products', {
+            const response = await fetch('${API_BASE_URL}/products', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -181,7 +183,7 @@ const SellerDashboardRBAC = () => {
     const handleUpdateProduct = async (productId, updates) => {
         try {
             const token = localStorage.getItem('auth-token');
-            const response = await fetch(`http://localhost:5000/api/products/${productId}`, {
+            const response = await fetch(`${API_BASE_URL}/products/${productId}`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -207,7 +209,7 @@ const SellerDashboardRBAC = () => {
 
         try {
             const token = localStorage.getItem('auth-token');
-            const response = await fetch(`http://localhost:5000/api/products/${productId}`, {
+            const response = await fetch(`${API_BASE_URL}/products/${productId}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${token}` }
             });
@@ -228,7 +230,7 @@ const SellerDashboardRBAC = () => {
     const handleUpdateOrderStatus = async (orderId, newStatus) => {
         try {
             const token = localStorage.getItem('auth-token');
-            const response = await fetch(`http://localhost:5000/api/orders/${orderId}/status`, {
+            const response = await fetch(`${API_BASE_URL}/orders/${orderId}/status`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -598,3 +600,4 @@ const SellerDashboardRBAC = () => {
 };
 
 export default SellerDashboardRBAC;
+
